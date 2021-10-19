@@ -1,12 +1,15 @@
 # Git Nuke to $1
 function gnt {
+  RED='\033[0;31m'
+  NC='\033[0m' # No Color
+  echo "Git ${RED}NUKE${NC} to '$1' branch"
   git checkout $1
   git pull
   git pull --tags --force
   git remote prune origin
   git fetch --all
   git fetch --prune origin "+refs/tags/*:refs/tags/*"
-  git branch | grep -v "master\|develop" | xargs git branch -D
+  git branch | grep -v "$1" | xargs git branch -D
 }
 
 # Git Move X Commits to Branch (number of commits, branch name)
