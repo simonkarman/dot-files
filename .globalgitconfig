@@ -1,0 +1,9 @@
+[user]
+	name = Simon Karman
+	email = simonkarman@binx.io
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
+[core]
+	excludesFile = ~/.globalgitignore
