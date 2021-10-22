@@ -1,8 +1,22 @@
-# Git Nuke to $1
+# Git Nuke To (optional branch name)
 function gnt {
   RED='\033[0;31m'
+  YELLOW='\033[1;33m'
   NC='\033[0m' # No Color
-  echo "Git ${RED}NUKE${NC} to '$1' branch"
+  ROOT=$(git rev-parse --show-toplevel)
+  GNT_FILE="$ROOT/.gnt"
+  branch=$1
+  if [[ ! -n $branch ]]; then
+    if [[ -f $GNT_FILE ]]; then
+      branch=$(cat $GNT_FILE)
+    else
+      echo "${RED}ERROR!${NC} Please provide a branch name as an argument to this function.\n       ${YELLOW}For example: 'gnt master'${NC}"
+      return
+    fi
+  else
+    echo $1 > $GNT_FILE
+  fi
+  echo "Git ${RED}NUKE${NC} to '$branch' branch"
   git checkout $1
   git pull
   git pull --tags --force
