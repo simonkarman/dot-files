@@ -17,13 +17,13 @@ function gnt {
     echo $1 > $GNT_FILE
   fi
   echo "Git ${RED}NUKE${NC} to '$branch' branch"
-  git checkout $1
+  git checkout $branch
   git pull
   git pull --tags --force
   git remote prune origin
   git fetch --all
   git fetch --prune origin "+refs/tags/*:refs/tags/*"
-  git branch | grep -v "$1" | xargs git branch -D
+  git branch | grep -v "$branch" | xargs git branch -D
 }
 
 # Git Move X Commits to Branch (number of commits, branch name)

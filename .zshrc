@@ -1,8 +1,15 @@
 # ZSH
 export ZSH="/Users/simonkarman/.oh-my-zsh"
 ZSH_THEME="spaceship"
+
+# https://github.com/spaceship-prompt/spaceship-prompt/blob/master/docs/options.md
+SPACESHIP_PACKAGE_SHOW=false
+
 plugins=(git gcloud kubectl per-directory-history zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
+
+# dot-files
+source /Users/simonkarman/projects/simonkarman/dot-files/aliases.sh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/simonkarman/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/simonkarman/google-cloud-sdk/path.zsh.inc'; fi
@@ -22,9 +29,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
-# dot-files
-source /Users/simonkarman/projects/simonkarman/dot-files/aliases.sh
-
 # JetBrains shell scripts
 export PATH="/Users/simonkarman/jetbrains-shell-scripts:$PATH"
 
@@ -33,3 +37,6 @@ export PATH="$HOME/.tgenv/bin:$PATH"
 
 # PostgreSQL Client (psql)
 export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+# Felyx CLI
+source /Users/simonkarman/projects/felyx/felyx-cli/init.sh

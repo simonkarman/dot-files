@@ -22,11 +22,28 @@ alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 # Login Xebia OnePassword
 alias lxo='eval $(op signin xebia)'
 
-# gcloud activate another config
-alias gconfig='gcloud config configurations activate'
+# gcloud (un)set the active config
+alias gset='gcloud config configurations activate'
+alias gunset="rm $HOME/.config/gcloud/active_config"
+
+# Docker
+function dri() {
+  docker run -it "$1" /bin/bash
+}
+
+# spaceship
+add_spacship_prompt_before() {
+  LINE_SEP_INDEX=$#SPACESHIP_PROMPT_ORDER
+  for ((i = 1; i <= $#SPACESHIP_PROMPT_ORDER; i++)); do
+    if [[ $SPACESHIP_PROMPT_ORDER[i] == "$1" ]]; then
+      LINE_SEP_INDEX=$i-1
+    fi
+  done
+  SPACESHIP_PROMPT_ORDER=("${SPACESHIP_PROMPT_ORDER[@]:0:$LINE_SEP_INDEX}" $2 "${SPACESHIP_PROMPT_ORDER[@]:$LINE_SEP_INDEX}")
+}
 
 # Modules
-ROOT=/Users/simonkarman/projects/simonkarman/dot-files/
-source $ROOT/git.sh
-source $ROOT/npm.sh
-source $ROOT/terraform.sh
+DOT_FILES_ROOT="$HOME/projects/simonkarman/dot-files/"
+source $DOT_FILES_ROOT/git.sh
+source $DOT_FILES_ROOT/npm.sh
+source $DOT_FILES_ROOT/terraform.sh

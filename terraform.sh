@@ -16,22 +16,22 @@ function tfmoe {
 
 #TerraForm MOdule Initialize
 function tfmoi {
-  touch $1/variables.tf
-  touch $1/outputs.tf
-  touch $1/versions.tf
-  touch $1/main.tf
+  touch variables.tf
+  touch outputs.tf
+  touch versions.tf
+  touch main.tf
 }
 
 # Find all refs in hcl files and replace them with a new version
-function hcl_ref() {
-  repository=$1
-  raw_version=$2
-  version=$(sed -E 's/\./\\\./g' <<< $raw_version)
-  echo "Going to change version to $raw_version of $repository..."
-  grep -rli "$repository.*\?ref=" **/*.hcl | xargs sed -i.bak "s/\?ref=.*\"/\?ref=$version\"/g"
-  git reset .
-  git diff --color --unified=0 **/*.hcl | grep '^\e\[[^m]*m[-+]' | grep -Ev '(--- a/|\+\+\+ b/)' | grep --color=none "$repository"
-  grep -rli "$repository.*\?ref=" **/*.hcl | xargs git add
-  git commit -m "Updated tag to $raw_version"
-  echo "Completed!"
-}
+# function hcl_ref() {
+#   repository=$1
+#   raw_version=$2
+#   version=$(sed -E 's/\./\\\./g' <<< $raw_version)
+#   echo "Going to change version to $raw_version of $repository..."
+#   grep -rli "$repository.*\?ref=" **/*.hcl | xargs sed -i.bak "s/\?ref=.*\"/\?ref=$version\"/g"
+#   git reset .
+#   git diff --color --unified=0 **/*.hcl | grep '^\e\[[^m]*m[-+]' | grep -Ev '(--- a/|\+\+\+ b/)' | grep --color=none "$repository"
+#   grep -rli "$repository.*\?ref=" **/*.hcl | xargs git add
+#   git commit -m "Updated tag to $raw_version"
+#   echo "Completed!"
+# }
