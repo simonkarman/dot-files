@@ -26,9 +26,9 @@ alias lxo='eval $(op signin xebia)'
 alias gset='gcloud config configurations activate'
 alias gunset="rm $HOME/.config/gcloud/active_config"
 
-# Docker
+# Docker Run Image (https://gist.github.com/mitchwongho/11266726)
 function dri() {
-  docker run -it "$1" /bin/bash
+  docker run --entrypoint /bin/bash -it "$1"
 }
 
 # spaceship
