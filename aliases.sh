@@ -22,14 +22,16 @@ alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 # Login Xebia OnePassword
 alias lxo='eval $(op signin xebia)'
 
+# Password Card
+alias passwordcard="open $HOME/projects/simonkarman/dot-files/passwordcard.jpg"
+alias pc="passwordcard"
+
 # gcloud (un)set the active config
 alias gset='gcloud config configurations activate'
 alias gunset="rm $HOME/.config/gcloud/active_config"
 
 # Docker Run Image (https://gist.github.com/mitchwongho/11266726)
-function dri() {
-  docker run --entrypoint /bin/bash -it "$1"
-}
+alias dri='docker run --entrypoint /bin/bash -it'
 
 # spaceship
 add_spacship_prompt_before() {

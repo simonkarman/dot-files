@@ -39,4 +39,4 @@ export PATH="$HOME/.tgenv/bin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # Felyx CLI
-source /Users/simonkarman/projects/felyx/felyx-cli/init.sh
+source /Users/simonkarman/projects/felyx/cli/init.sh
