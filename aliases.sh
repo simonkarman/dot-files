@@ -31,7 +31,7 @@ alias gset='gcloud config configurations activate'
 alias gunset="rm $HOME/.config/gcloud/active_config"
 
 # Docker Run Image (https://gist.github.com/mitchwongho/11266726)
-alias dri='docker run --entrypoint /bin/bash -it'
+alias dri='docker run --rm --entrypoint /bin/sh -it'
 
 # spaceship
 add_spacship_prompt_before() {

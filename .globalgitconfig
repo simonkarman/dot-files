@@ -1,6 +1,8 @@
 [user]
 	name = Simon Karman
 	email = simonkarman@binx.io
+[includeIf "gitdir:~/projects/simonkarman/"] # personal projects
+    path = .gitconfig-personal
 [init]
 	defaultBranch = main
 [pull]

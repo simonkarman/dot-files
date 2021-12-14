@@ -1,6 +1,7 @@
 # ZSH
 export ZSH="/Users/simonkarman/.oh-my-zsh"
 ZSH_THEME="spaceship"
+# ZSH_THEME="robbyrussell"
 
 # https://github.com/spaceship-prompt/spaceship-prompt/blob/master/docs/options.md
 SPACESHIP_PACKAGE_SHOW=false
@@ -40,3 +41,6 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # Felyx CLI
 source /Users/simonkarman/projects/felyx/cli/init.sh
+
+# Go Version Manager
+source /Users/simonkarman/.gvm/scripts/gvm

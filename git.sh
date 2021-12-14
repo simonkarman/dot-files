@@ -17,11 +17,10 @@ function gnt {
     echo $1 > $GNT_FILE
   fi
   echo "Git ${RED}NUKE${NC} to '$branch' branch"
-  git checkout $branch
-  git pull
+  git fetch --all
+  git checkout -B "$branch" "origin/$branch"
   git pull --tags --force
   git remote prune origin
-  git fetch --all
   git fetch --prune origin "+refs/tags/*:refs/tags/*"
   git branch | grep -v "$branch" | xargs git branch -D
 }
