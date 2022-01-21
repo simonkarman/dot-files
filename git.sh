@@ -6,23 +6,28 @@ function gnt {
   ROOT=$(git rev-parse --show-toplevel)
   GNT_FILE="$ROOT/.gnt"
   branch=$1
-  if [[ ! -n $branch ]]; then
+  if [[ -z $branch ]]; then
     if [[ -f $GNT_FILE ]]; then
-      branch=$(cat $GNT_FILE)
+      branch=$(cat "$GNT_FILE")
     else
-      echo "${RED}ERROR!${NC} Please provide a branch name as an argument to this function.\n       ${YELLOW}For example: 'gnt master'${NC}"
+      echo "${RED}ERROR!${NC} Please provide a branch name as an argument to this function."
+      echo "       ${YELLOW}For example: 'gnt main'${NC}"
       return
     fi
   else
-    echo $1 > $GNT_FILE
+    echo "$1" > "$GNT_FILE"
   fi
   echo "Git ${RED}NUKE${NC} to '$branch' branch"
-  git fetch --all
-  git checkout -B "$branch" "origin/$branch"
-  git pull --tags --force
-  git remote prune origin
-  git fetch --prune origin "+refs/tags/*:refs/tags/*"
-  git branch | grep -v "$branch" | xargs git branch -D
+  (
+    cd "$ROOT" || return
+    git fetch --all
+    git clean -f -d
+    git checkout -B "$branch" "origin/$branch"
+    git pull --tags --force
+    git remote prune origin
+    git fetch --prune origin "+refs/tags/*:refs/tags/*"
+    git branch | grep -v "$branch" | xargs git branch -D
+  )
 }
 
 # Git Move X Commits to Branch (number of commits, branch name)

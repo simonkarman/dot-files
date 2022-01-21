@@ -40,6 +40,8 @@ export PATH="$HOME/.tgenv/bin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # Felyx CLI
+export FELYX_ITERM_PROFILE="true"
+export FELYX_SQL_USER="postgres"
 source /Users/simonkarman/projects/felyx/cli/init.sh
 
 # Go Version Manager

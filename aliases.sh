@@ -25,13 +25,15 @@ alias lxo='eval $(op signin xebia)'
 # Password Card
 alias passwordcard="open $HOME/projects/simonkarman/dot-files/passwordcard.jpg"
 alias pc="passwordcard"
+alias password_unsafe='date +%s | shasum | base64 | head -c 32 ; echo'
 
 # gcloud (un)set the active config
 alias gset='gcloud config configurations activate'
 alias gunset="rm $HOME/.config/gcloud/active_config"
 
 # Docker Run Image (https://gist.github.com/mitchwongho/11266726)
-alias dri='docker run --rm --entrypoint /bin/sh -it'
+alias dri='docker run --rm --entrypoint /bin/bash -it -v $(pwd):/mount/host:ro'
+alias dri_sh='docker run --rm --entrypoint /bin/sh -it -v $(pwd):/mount/host:ro'
 
 # spaceship
 add_spacship_prompt_before() {
