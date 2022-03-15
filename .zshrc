@@ -41,8 +41,12 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # Felyx CLI
 export FELYX_ITERM_PROFILE="true"
-export FELYX_SQL_USER="postgres"
+export FELYX_SQL_USER="use-iam"
 source /Users/simonkarman/projects/felyx/cli/init.sh
 
 # Go Version Manager
 source /Users/simonkarman/.gvm/scripts/gvm
+
+# Ensure to use brew curl if available
+# More info: https://security.stackexchange.com/a/232452
+export PATH="/usr/local/opt/curl/bin:$PATH"
