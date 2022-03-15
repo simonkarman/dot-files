@@ -1,0 +1,6 @@
+[user]
+name = Simon Karman
+email = simon.karman@persgroep.net
+
+[core]
+sshCommand = "ssh -i ~/.ssh/id_rsa_dpg -F /dev/null"

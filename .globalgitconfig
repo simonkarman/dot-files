@@ -1,11 +1,13 @@
 [user]
 	name = Simon Karman
 	email = simonkarman@binx.io
-[includeIf "gitdir:~/projects/simonkarman/"] # personal projects
-    path = .gitconfig-personal
 [init]
 	defaultBranch = main
 [pull]
 	ff = only
 [core]
 	excludesFile = ~/.globalgitignore
+[includeIf "gitdir:~/projects/simonkarman/"] # personal projects
+	path = .gitconfig-personal
+[includeIf "gitdir:~/projects/dpg/"] # dpg projects
+	path = .gitconfig-dpg
