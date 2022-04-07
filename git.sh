@@ -15,7 +15,7 @@ function gnt {
       return
     fi
   else
-    echo "$1" > "$GNT_FILE"
+    echo -n "$1" > "$GNT_FILE"
   fi
   echo "Git ${RED}NUKE${NC} to '$branch' branch"
   (
@@ -37,10 +37,25 @@ gmxctb() {
 
 # Open a git repository in your browser (subpage of repo)
 repo() {
+  subpage=$1
+
   repoRoot=$(git rev-parse --show-toplevel)
-  originUrl=$(git --git-dir "$repoRoot/.git" remote get-url origin)
-  originUrlReplaced=$(echo "$originUrl" | sed -e 's/^.*git\@/https:\/\//g' -e 's/\.\([a-zA-Z][a-zA-Z]*\)\:/\.\1\//g' -e 's/\.git$//g')
-  open -a "Google Chrome" "$originUrlReplaced/$1"
+  remoteUrl=$(git --git-dir "$repoRoot/.git" remote get-url $(git remote))
+  baseUrl=$(echo "$remoteUrl" | sed -e 's/^.*git\@/https:\/\//g' -e 's/\.\([a-zA-Z][a-zA-Z]*\)\:/\.\1\//g' -e 's/\.git$//g')
+
+  mainBranchFile="$(git rev-parse --show-toplevel)/.gnt"
+  mainBranch=$(cat "$GNT_FILE")
+  currentBranch=$(git rev-parse --abbrev-ref HEAD)
+
+  # For Bitbucket: If no subpage is provided and we're not on the main branch, then navigate to the branch page
+  if [[ $baseUrl == "https://bitbucket.org/"* ]] && [[ -z $subpage ]] && [[ $currentBranch != $mainBranch ]]; then
+    commit=$(git rev-parse HEAD)
+    repoUrl="$baseUrl/src/$commit/?at=$currentBranch"
+  # Default: Navigate to the base url including the subpage
+  else
+    repoUrl="$baseUrl/$subpage"
+  fi
+  open -a "Google Chrome" "$repoUrl"
 }
 
 # Change directory to the root of the git repository
