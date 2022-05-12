@@ -12,7 +12,8 @@ bindkey "^[[1;10C" end-of-line
 
 # Jump to projects
 function to {
-  cd "$HOME/projects/$1"
+  cd "$HOME/projects/$1";
+  clear;
 }
 compctl -W $HOME/projects/ -/ to
 

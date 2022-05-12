@@ -43,8 +43,8 @@ repo() {
   remoteUrl=$(git --git-dir "$repoRoot/.git" remote get-url $(git remote))
   baseUrl=$(echo "$remoteUrl" | sed -e 's/^.*git\@/https:\/\//g' -e 's/\.\([a-zA-Z][a-zA-Z]*\)\:/\.\1\//g' -e 's/\.git$//g')
 
-  mainBranchFile="$(git rev-parse --show-toplevel)/.gnt"
-  mainBranch=$(cat "$GNT_FILE")
+  mainBranchFile="$repoRoot/.gnt"
+  mainBranch=$(cat "$mainBranchFile" 2>/dev/null)
   currentBranch=$(git rev-parse --abbrev-ref HEAD)
 
   # For Bitbucket: If no subpage is provided and we're not on the main branch, then navigate to the branch page

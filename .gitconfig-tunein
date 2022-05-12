@@ -1,0 +1,6 @@
+[user]
+name = Simon Karman
+email = skarman-x@tunein.com
+
+[core]
+sshCommand = "ssh -i ~/.ssh/id_rsa_tunein -F /dev/null"

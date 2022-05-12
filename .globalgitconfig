@@ -11,3 +11,5 @@
 	path = .gitconfig-personal
 [includeIf "gitdir:~/projects/dpg/"] # dpg projects
 	path = .gitconfig-dpg
+[includeIf "gitdir:~/projects/tunein/"] # tunein projects
+	path = .gitconfig-tunein
