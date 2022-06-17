@@ -60,3 +60,14 @@ repo() {
 
 # Change directory to the root of the git repository
 alias root="cd \$(git rev-parse --show-toplevel)"
+
+# Local Git Clone (targetFolder, repository)
+lgc() {
+  targetFolder=$1
+  repository=$2
+  if [[ -z $directory ]] || [[ -z $targetFolder ]]; then
+    echo "ERROR: Please provide repository and targetFolder..."
+    return 1;
+  fi
+  git clone "$repository" "$targetFolder/$repository"
+}

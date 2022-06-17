@@ -52,3 +52,4 @@ DOT_FILES_ROOT="$HOME/projects/simonkarman/dot-files/"
 source $DOT_FILES_ROOT/git.sh
 source $DOT_FILES_ROOT/npm.sh
 source $DOT_FILES_ROOT/terraform.sh
+source $DOT_FILES_ROOT/dpg.sh
