@@ -53,3 +53,4 @@ source $DOT_FILES_ROOT/git.sh
 source $DOT_FILES_ROOT/npm.sh
 source $DOT_FILES_ROOT/terraform.sh
 source $DOT_FILES_ROOT/dpg.sh
+source $DOT_FILES_ROOT/tunein.sh
