@@ -75,6 +75,7 @@ lgc() {
 # From: https://gist.github.com/mzabriskie/6631607
 git-status() {
   dir="$1"
+  prefix="$2"
 
   # No directory has been provided, use current
   if [ -z "$dir" ]
@@ -89,7 +90,7 @@ git-status() {
   fi
 
   # Loop all sub-directories
-  for f in $dir*; do
+  for f in $dir$prefix*; do
 
     # Only interested in directories
     [ -d "${f}" ] || continue
